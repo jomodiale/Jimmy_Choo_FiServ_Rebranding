@@ -176,10 +176,7 @@ const RightWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   @media only screen and (min-width: 1500px) {
-    margin-left: 650px;
-  }
-  @media only screen and (max-width: 200px) {
-      margin-left: 250px;
+    margin-left: 250px;
   }
 `;
 
