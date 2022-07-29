@@ -1,6 +1,4 @@
-# Financial Service Demo Powered by Coveo
-
-The project is hosted live [here](https://fin-serv-coveo.web.app).
+# FiServ Rebrand for Jimmy Choo Powered by Coveo
 
 The initial UI was created using [Coveo CLI - ui:create:react](https://docs.coveo.com/en/cli/#coveo-uicreatereact-name).
 
