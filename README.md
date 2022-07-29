@@ -3,7 +3,7 @@
 The initial UI was created using [Coveo CLI - ui:create:react](https://docs.coveo.com/en/cli/#coveo-uicreatereact-name).
 
 ## Modifications
-1.	NavBar.tsx file modifications include BG Color, text color, styling (flex-direction) for separate columns, and font awesome location pin icon.
+1.	NavBar.tsx file modifications include BG Color, text color, styling (flex-direction) for separate columns.
 2.	Header.tsx file modifications include BG Color and the addition of icons. Modified navigation link code to conditionally render ‘Sale’ text with #bf2d2d color.
 3.	HomeConfig.tsx file; changed contents of HeroConfig and HeaderConfig objects.
 4.	HeroHome.tsx file; changed BG image and text wrapper placement
