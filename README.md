@@ -1,4 +1,4 @@
-# FiServ Rebrand for Commerce Demo Powered by Coveo
+# FiServ Rebrand for Jimmy Choo Powered by Coveo
 
 The initial UI was created using [Coveo CLI - ui:create:react](https://docs.coveo.com/en/cli/#coveo-uicreatereact-name).
 
