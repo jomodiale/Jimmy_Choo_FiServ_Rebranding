@@ -55,8 +55,8 @@ export const RecommendationListRenderer: FunctionComponent<
   const NumberOfResult = VideoRecommendationConfig.numberOfResults
   return (
     <MainWrapper>
-      <Title>{VideoRecommendationConfig.title}</Title>
-      <SubTitle>{VideoRecommendationConfig.description}</SubTitle>
+      {/* <Title>{VideoRecommendationConfig.title}</Title> */}
+      {/* <SubTitle>{VideoRecommendationConfig.description}</SubTitle> */}
       {state.recommendations.length > 0 ?
       <CardWrapper>
         {state?.recommendations?.slice(0, NumberOfResult).map((recommendation, index) => {
@@ -161,4 +161,6 @@ const CardWrapper = styled.div`
   max-width: 1500px;
   margin-top: 20px;
 `;
+
+
 

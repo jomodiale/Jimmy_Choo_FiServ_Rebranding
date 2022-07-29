@@ -22,6 +22,7 @@ import BreadcrumbManager from "./BreadcrumbManager";
 import styled from 'styled-components'
 import { CustomContextContext } from "../CustomContext/CustomContextContext";
 import { DefaultSideBarRecommendationConfigType, SearchPageTabConfigType } from "../../config/Types/ConfigTypes";
+import OffCanva from './OffCanvas';
 
 interface ISearchPageProps {
   engine: SearchEngine;
@@ -44,7 +45,7 @@ const SearchPage: React.FunctionComponent<ISearchPageProps> = (props) => {
         container
         justifyContent="center"
         style={{
-          background: "#F6F7F9",
+          background: "#ffffff"
         }}
       >
           <SearchBoxContainer>
@@ -52,47 +53,40 @@ const SearchPage: React.FunctionComponent<ISearchPageProps> = (props) => {
           </SearchBoxContainer>
       </Grid>
       <SearchTabs filterSelected={filter? filter : ""} />
-      <Container maxWidth="xl" style={{ padding: "0px" }}>
-        <Grid item mt={3} mb={2}>
-          <DidYouMean />
-        </Grid>
+      <Container maxWidth="xl" style={{padding: '0px'}}>
+        <Grid item mt={3} mb={2}> <DidYouMean /> </Grid>
         <Box my={2}>
           <Grid container style={{ opacity: resultLoading ? "0.6" : "1" }}>
-            <Grid item xs={12} md={3} sm={12}>
-              <FacetList />
+          <Grid item xs={12} md={3} sm={12}>
+              <OffCanva/>
             </Grid>
-            <Grid item xs={12} md={6} sm={12}>
-            <BreadcrumbManager/>
+            <Grid item xs={12}>
+              <BreadcrumbManager/>
+
               <Box pl={3} pr={2}>
-                <Grid container alignItems="flex-end">
-                  <Grid item md={9} xs ={12} mb={2}>
+
+                <Grid container alignItems="flex-end" justifyContent='flex-end' mb={2}>
+                  <Grid item md={11} xs ={12} mb={3}>
                     <QuerySummary />
                   </Grid>
-                  <Grid
-                    item
-                    md={2}
-                    xs ={12}
-                    mb={2}
-                  >
+                  <Grid item md={1} xs ={12} mb={3}>
                     <Sort />
                   </Grid>
                 </Grid>
+
                 <ResultList setResultLoading={setResultLoading} />
+
               </Box>
+
               <Box my={4}>
                 <Grid container>
-                  <Grid item md={6} ml = {2} mb={2}>
-                    <Pager />
-                  </Grid>
-                  <Grid item md={5} ml = {2}>
-                    <ResultsPerPage />
-                  </Grid>
+                  <Grid item md={6} ml = {2} mb={2}> <Pager /> </Grid>
+                  <Grid item md={2} ml = {2}> <ResultsPerPage /> </Grid>
                 </Grid>
               </Box>
+              
             </Grid>
-            <Grid item xs={12} md={3} sm={12}>
-              <SideBarRecommendation filter = {filter}/>
-            </Grid>
+
           </Grid>
         </Box>
       </Container>

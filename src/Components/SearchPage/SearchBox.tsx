@@ -35,9 +35,18 @@ const SearchBoxRenderer: FunctionComponent<SearchBoxProps> = (props) => {
       }}
       options={state.suggestions.map((suggestion) => suggestion.rawValue)}
       freeSolo
-      style={{width: 'auto', background: 'white'}}
+      style={{width: 'auto', background: '#ffffff'}}
       renderInput={(params) => (
-        <TextField {...params} placeholder="Search" size="small" className='search-box'  onKeyDown={e => {
+        <TextField {...params} 
+        placeholder="Search" 
+        size="small" 
+        className='search-box'  
+        id="standard-basic" 
+        variant="standard" 
+        style={{
+          fontFamily: 'Maven Pro'
+        }}
+        onKeyDown={e => {
           if (e.code === 'Enter' && controller.state.value === '') {
               controller.submit();
           }
@@ -54,6 +63,8 @@ const SearchBoxRenderer: FunctionComponent<SearchBoxProps> = (props) => {
                   key={index}
                   style={{
                     fontWeight: part.highlight ? 400 : 300,
+                    color: '#000',
+                    fontFamily: 'Jost'
                   }}
                 >
                   {part.text}
@@ -75,3 +86,4 @@ const SearchBox = () => {
 };
 
 export default SearchBox;
+

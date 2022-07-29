@@ -4,7 +4,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import List from "@mui/material/List";
+import Grid from "@mui/material/Grid";
 import {
   buildResultList,
   Result,
@@ -18,6 +18,7 @@ import {
   ResultTemplateConfig,
 } from "../../config/SearchConfig";
 import Skeleton from "react-loading-skeleton";
+import styled from 'styled-components'
 import "react-loading-skeleton/dist/skeleton.css";
 
 type Template = (result: Result) => React.ReactNode;
@@ -59,7 +60,7 @@ const ResultListRenderer: FunctionComponent<ResultListRendererProps> = (
 
 
   return (
-    <List>
+    <Grid container rowSpacing={4} columnSpacing={{ xs: 3, sm: 3, md: 4 }}>
       {state.results.length === 0 && (state.isLoading || !state.firstSearchExecuted) ? (
         <ResultListSkeleton />
       ) : (
@@ -69,16 +70,25 @@ const ResultListRenderer: FunctionComponent<ResultListRendererProps> = (
               headlessResultTemplateManager.selectTemplate(result);
             return (
               <React.Fragment key={result.uniqueId}>
+                 <Grid item xs={4}>
+                <Item>
                 {" "}
                 {template ? template(result) : null}{" "}
+                </Item>
+                </Grid>
               </React.Fragment>
             );
           })}
+         
         </>
       )}
-    </List>
+    </Grid>
   );
 };
+
+const Item = styled.div`
+
+`
 
 interface ResultListProps {
   setResultLoading: (x: boolean) => void;
@@ -119,3 +129,4 @@ export const ResultListSkeleton: FunctionComponent = () => {
 };
 
 export default ResultList;
+

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { buildTab, Tab } from "@coveo/headless";
 import EngineContext from "../../common/engineContext";
 import styled from "styled-components";
-import { Theme } from "../../theme";
+import { JCTheme, Theme } from "../../theme";
 import { useNavigate } from "react-router-dom";
 import { SearchPageTabConfig } from "../../config/SearchConfig";
 import { SearchPageTabConfigType } from "../../config/Types/ConfigTypes";
@@ -83,8 +83,9 @@ const SearchTabs : React.FC<SearchTabsType> = ({ filterSelected }) => {
 };
 
 const Wrapper = styled.div`
+  font-family: 'Jost', sans-serif;
   width: 100%;
-  background: ${Theme.navbar};
+  background: ${JCTheme.leftWrapperBackground};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,14 +96,14 @@ const Wrapper = styled.div`
 const TabTitle = styled.a<{isActive : boolean }>`
   padding: 15px 20px;
   text-align: center;
-  color: ${Theme.secondaryText};
+  color: ${JCTheme.leftWrapperColor};
   cursor: pointer;
   font-family: inherit;
-  background: ${(props) => (props.isActive ? Theme.selection : null)};
-  opacity: ${(props) => (props.isActive ? 1 : 0.8)};
+  background: ${(props) => (props.isActive ? JCTheme.leftWrapperColor : null)};
+  color: ${(props) => (props.isActive ? JCTheme.leftWrapperBackground : null)};
   transition: 0.2s ease-in-out all;
   &:hover {
-    opacity: 1;
+    opacity: ${(props) => (props.isActive ? 1 : 0.8)};
   }
 `;
 

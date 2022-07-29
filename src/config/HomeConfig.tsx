@@ -1,4 +1,4 @@
-import HeroImage from '../assets/Hero.jpg'
+import HeroImage from '../assets/Hero.jpg';
 import { RecommendationType } from './Types/ConfigTypes';
 
 export const NavBarConfig = [
@@ -23,33 +23,45 @@ export const NavBarConfig = [
 
 export const HeaderConfig = [
     {
-        title: "Bank Account",
+        title: "Women",
         redirectTo: "/home",
       },
       {
-        title: "Credit Card",
+        title: "Men",
         redirectTo: "/",
       },
       {
-        title: "Mortgages",
+        title: "Handbags",
         redirectTo: "/",
       },
       {
-        title: "Investment",
+        title: "Bridal",
         redirectTo: "/",
       },
       {
-        title: "Insurance",
+        title: "Beauty",
         redirectTo: "/",
       },
+      {
+        title: "Gifts",
+        redirectTo: "/",
+      },
+      {
+        title: "Sale",
+        redirectTo: "/",
+      },
+      {
+        title: "In My Choos",
+        redirectTo: "/",
+      }
 ]
 
 
 export const HeroConfig = {
-    title  : 'Life changes fast',
+    title  : 'PLAYFUL PUMPS',
     description : 'A BTEP Mortgage gives you the flexibility to use the equity from your home when you need it.',
     background : HeroImage,
-    buttonText : 'Learn More',
+    buttonText : 'SHOP NOW',
     onClickButtonRedirect : '/search',
     
 }

@@ -1,19 +1,29 @@
 import {createTheme} from '@mui/material/styles';
 import {red} from '@mui/material/colors';
 
+export const JCTheme = {
+  leftWrapperBackground: '#000',
+  rightWrapperBackground: '#e2e2e2',
+  leftWrapperColor: '#FFFFFF',
+  rightWrapperColor: '#666',
+  menuColor: '#212121',
+  menuHover: '#757575',
+  sale: '#bf2d2d'
+}
+
 export const Theme = {
-  primaryText : '#333357',
+  primaryText : '#000',
   secondaryText: '#FFFFFF',
-  primary : '#062D70',
+  primary : '#ffffff',
   secondary: '#004990',
   selection : '#1372EC',
-  link: '#1372EC',
+  link: '#000',
   navbar: '#062D70',
   background: '#E5E5E5',
-  button : '#1372EC',
+  button : '#000',
   footer: '#262646',
-  resultLink: '#1372EC',
-  excerpt : '#626971',
+  resultLink: '#000',
+  excerpt : '#212121',
   headerIconColor : "grey"
 }
 
@@ -38,8 +48,6 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: 'Gibson,Noto Sans, Avenir, Helvetica, Arial, sans-serif',
-    // Material-UI uses rem units for the font size. This will change the base size for the entire search page
-    // More info at https://material-ui.com/customization/typography/#font-size
     fontSize: 16,
     fontWeightRegular : '300',
     fontWeightMedium : '400'

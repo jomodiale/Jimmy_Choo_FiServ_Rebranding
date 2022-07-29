@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Theme } from "../../theme";
+import { JCTheme, Theme } from "../../theme";
 import styled from "styled-components";
 import HeaderLogo from "../../assets/HeaderLogo.svg";
 import { Link } from "react-router-dom";
@@ -13,12 +13,36 @@ import { HeaderConfig } from "../../config/HomeConfig";
 import Popover from "@mui/material/Popover";
 import ContextForm from "../CustomContext/ContextForm";
 import { CustomContextContext } from "../CustomContext/CustomContextContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faBasketShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const Header: React.FC = () => {
   const [openSearch, setOpenSearch] = useState<boolean>(false);
   const location = useLocation();
   const navigate = useNavigate();
   const {getProfile} = useContext(CustomContextContext)
+
+  //color change
+  const [myColor, setmyColor] = useState(JCTheme.menuColor);
+
+  const NavigationLink = styled(Link)`
+  margin-right: 30px;
+  margin-top: 20px;
+  color: ${myColor};
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: 0.2s ease-in-out all;
+  &:hover {
+    opacity: 0.7;
+    color: ${JCTheme.menuHover};
+  }
+  @media (max-width: 1000px) {
+    display: none;
+  }
+`;
+
   const onSearchPage = location.pathname.includes("search");
   const toggleSearchBox = () => {
     if (onSearchPage) {
@@ -58,28 +82,32 @@ const Header: React.FC = () => {
   return (
     <>
       <Wrapper>
-        <Logo src={HeaderLogo} onClick={() => navigate("/home")} />
-        <RightWrapper>
-          <LinkWrapper>
-            {HeaderConfig.map((item) => {
+      <Logo src={HeaderLogo} onClick={() => navigate("/home")} />
+        <LeftWrapper>
+        &nbsp;
+        {HeaderConfig.map((item) => {
               return (
                 <NavigationLink key={item.title} to={item.redirectTo}>
-                  {item.title}
+                  { item.title ==='Sale' ? <p style={{color: JCTheme.sale}}>Sale</p> : <p>{item.title}</p>}
                 </NavigationLink>
               );
             })}
-            <Divider/>
+        </LeftWrapper>
+        <RightWrapper>
+          <LinkWrapper>
+            {/* <Divider/> */}
             <IconsWrapper>
               <IconContainer
                 style={{ color: Theme.headerIconColor, cursor: "pointer" }}
                 onClick={() => toggleSearchBox()}
               >
                 {openSearch && !onSearchPage ? (
-                  <Icon icon={x} size={26} />
+                  <Icon icon={x} size={20} />
                 ) : (
-                  <Icon icon={search} size={26} />
+                  <Icon icon={search} size={20} />
                 )}
               </IconContainer>
+              <FontAwesomeIcon icon={faHeart} style={{ color: Theme.headerIconColor, cursor: "pointer", fontSize: '20px'  }}/>
               <ProfileIconContainer
                 style={{ color: Theme.headerIconColor, cursor: "pointer" }}
                 aria-describedby={id}
@@ -88,6 +116,7 @@ const Header: React.FC = () => {
                 <ProfileAvatar src = {getProfile().profile} alt = {'profile pic'}/>
                 <ProfileName>{getProfile().name.split(' ').slice(0, -1).join(' ')}</ProfileName>
               </ProfileIconContainer>
+              <FontAwesomeIcon icon={faBasketShopping} style={{ color: Theme.headerIconColor, cursor: "pointer", fontSize: '20px' }} />
               <Popover
                   id={id}
                   open={open}
@@ -116,7 +145,8 @@ const Header: React.FC = () => {
 };
 
 const Wrapper = styled.header`
-  height: 80px;
+  font-family: 'Jost', sans-serif;
+  height: 70px;
   background-color: ${Theme.secondaryText};
   display: flex;
   padding: 0px 40px;
@@ -131,14 +161,26 @@ const Wrapper = styled.header`
 
 const Logo = styled.img`
   height: 50px;
-  width: 150px;
+  width: 250px;
+  margin-left: -20px;
   object-fit: contain;
+`;
+
+const LeftWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin: 50px;
 `;
 
 const RightWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  flex: 1;
+  @media only screen and (min-width: 1500px) {
+    margin-left: 650px;
+  }
+  @media only screen and (max-width: 200px) {
+      margin-left: 250px;
+  }
 `;
 
 const LinkWrapper = styled.ul`
@@ -148,20 +190,6 @@ const LinkWrapper = styled.ul`
   width: 800px;
   @media (max-width: 1000px) {
     width: auto;
-  }
-`;
-
-const NavigationLink = styled(Link)`
-  color: ${Theme.primaryText};
-  text-decoration: none;
-  font-size: 16px;
-  opacity: 1;
-  transition: 0.2s ease-in-out all;
-  &:hover {
-    opacity: 0.7;
-  }
-  @media (max-width: 1000px) {
-    display: none;
   }
 `;
 
@@ -192,12 +220,15 @@ const SearchContainer = styled.div`
 const IconsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (min-width: 400px) {
+    font-size: 20px
+  }
 `;
 
 const IconContainer = styled.button`
 background: none;
 border: 0px;
-width: 40px;
+width: 55px;
 transition: 0.2s ease-in-out all;
 &:hover{
   transform: scale(0.95);
@@ -221,7 +252,6 @@ const ProfileIconContainer = styled.button`
   background: none;
   border: 0px;
   margin-left: 20px;
-  width: 90px;
   display: flex;
   align-items: center;
   transition: 0.2s ease-in-out all;
@@ -245,8 +275,8 @@ const SearchBoxContainer = styled.div`
 
 
 const ProfileAvatar = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 24px;
   object-fit: cover;
 `

@@ -118,7 +118,7 @@ const CustomPeopleResultTemplate: React.FC<{
                   ) {
                     return (
                       <Excerpt
-                        style={{ display: "inline-block", fontWeight: "400" }}
+                        style={{ display: "inline-block", fontWeight: "400"}}
                         key={item}
                       >
                         {item}
@@ -157,7 +157,7 @@ export default CustomPeopleResultTemplate;
 const MainWrapper = styled.div`
   width: 95%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 10px 0px;
 `;
 
@@ -244,23 +244,25 @@ const RecommendationBadge = styled.div`
 `;
 
 const TitltAndDateWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+display: flex;
+justify-content: left;
+align-items: left;
+flex-direction: column;
+text-align: left;
 `;
 
 const DateWrapper = styled.p`
-  font-size: 16px;
-  color: ${Theme.excerpt};
-  font-family: inherit;
-  font-weight: 300px;
-  width: 150px;
-  display: flex;
-  justify-content: flex-end;
-  padding-left: 20px;
-  @media (max-width: 480px) {
-    font-size: 12px;
-  }
+font-size: 16px;
+color: ${Theme.excerpt};
+font-family: inherit;
+font-weight: 300px;
+width: 100px;
+display: flex;
+padding-left: 3px;
+margin-bottom: 5px;
+@media (max-width: 480px) {
+font-size: 12px;
+}
 `;
 const BadgeWrapper = styled.div`
   display: flex;

@@ -30,9 +30,19 @@ const DidYouMeanRenderer: FunctionComponent<DidYouMeanProps> = (props) => {
     );
   }
  
+
+  const btnstyle ={
+    backgroundColor: '#ffffff',
+    color: '#bf2d2d',
+    fontFamily: 'Jost',
+    border: 'none',
+    marginLeft: '20px',
+    fontWeight: '500'
+  }
+
   return (
-    <button onClick={() => controller.applyCorrection()}>
-      Did you mean: {state.queryCorrection.correctedQuery} ?
+    <button style={btnstyle} onClick={() => controller.applyCorrection()}>
+      Did you mean "{state.queryCorrection.correctedQuery}"
     </button>
   );
 };
