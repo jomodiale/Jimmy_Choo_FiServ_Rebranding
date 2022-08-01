@@ -15,10 +15,11 @@ The initial UI was created using [Coveo CLI - ui:create:react](https://docs.cove
 10.	Modified DidYouMean.tsx styling
 
 ## Cloning and Running the Application in local
-Clone the project into local
+Clone the project into local and
 Install all the npm packages
 
 ```bash
+git clone https://github.com/jomodiale/Jimmy_Choo_FiServ_Rebranding
 npm install
 ```
 In order to run the application Type the following command
